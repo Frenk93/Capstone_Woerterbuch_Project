@@ -1,9 +1,10 @@
 package com.github.frenk93.backend.Model;
 
 public record SingleWord(
+        String input,
         String word,
-        Wortarten wortart,
-        Genus genus,
-        Numerus numerus
+        String wortart,
+        String genus,
+        String pluralform
 ) {
 }
