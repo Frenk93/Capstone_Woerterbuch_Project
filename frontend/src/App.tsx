@@ -1,35 +1,41 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
+
+import "./singleWord"
 import './App.css'
+import {useEffect, useState} from "react";
+import EntryCard from "./components/EntryCard";
+import {Entry} from "./Entry.ts";
+import axios from "axios";
 
 function App() {
-  const [count, setCount] = useState(0)
+const [entry , setEntry] = useState<Entry[]>([])
 
-  return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+useEffect(
+    () => {
+      axios.get("/api")
+          .then(response  =>{
+            setEntry(response.data)
+      })
+    }, []
+);
+  const demoentry: Entry = {
+  word: {input: "", translatedWord: "", wortart: "", genus: "", pluralform: ""},
+    synonyme : [""],
+    beispielsatz: "",
+
+  }
+
+  if(!entry){
+    return <EntryCard entry={demoentry}/>
+  }
+
+
+  return <>
+
+    <h1>Frenks Wörterbuch: </h1>
+    {
+      entry.map(element  => <EntryCard entry = {element}/>)
+    }
     </>
-  )
 }
 
 export default App

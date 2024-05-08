@@ -26,17 +26,14 @@ public class ServiceAPI {
         return repo.findAll();
     }
 
-    public Optional<Entry> getEntryByWordName(String word) {
-        if (word.isEmpty() && !repo.findAll().contains(word)) {
-            throw new ResponseStatusException(HttpStatus.NOT_FOUND);
-        }
-        return repo.findById(word);
+    public Entry getEntryByWordName(String word) {
+       return repo.findByWord(word).orElseThrow();
 
     }
 
     public void setEntry(Entry entry){
-        if(!repo.findAll().contains(entry)){
-            repo.save(entry);
+        if(repo.findAll().contains(entry)){
+            throw new ResponseStatusException(HttpStatus.ALREADY_REPORTED);
         }
         repo.save(entry);
     }

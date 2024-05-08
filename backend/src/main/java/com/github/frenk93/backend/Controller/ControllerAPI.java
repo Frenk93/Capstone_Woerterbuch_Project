@@ -23,7 +23,7 @@ public class ControllerAPI {
 
 
     @GetMapping("/{input}")
-    public Optional<Entry> getEntryBySearchInput(@PathVariable String input){
+    public Entry getEntryBySearchInput(@PathVariable String input){
       return service.getEntryByWordName(input);
 
     }
