@@ -9,7 +9,7 @@ function EntryCard(props: Props ) {
     return (
 
         <div>
-            <h3>{props.entry.word.input}</h3>
+            <h1>{props.entry.word.input}</h1>
             <div>
                 <label>Translation:</label>
                 <h3>{props.entry.word.translatedWord +" ," + props.entry.word.wortart}</h3>
