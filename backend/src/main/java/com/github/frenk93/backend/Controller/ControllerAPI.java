@@ -22,15 +22,16 @@ public class ControllerAPI {
    private final ServiceAPI service;
 
 
-    @GetMapping("/{input}")
-    public Entry getEntryBySearchInput(@PathVariable String input){
-      return service.getEntryByWordName(input);
-
-    }
-
     @GetMapping()
     public List<Entry> getAllEntries() {
+        //Ich brauche nicht alle Entries, nur die, die dem Suchbegriff ähneln..
         return service.findAllEntries();
+    }
+
+    @GetMapping("/{input}")
+    public Entry getEntryBySearchInput(@PathVariable String input){
+        return service.getEntryByWordName(input);
+
     }
 
     @PostMapping
