@@ -40,3 +40,51 @@
 .read-the-docs {
   color: #888;
 }
+
+input{
+  background-color: whitesmoke;
+  solid-color: #535bf2;
+  color: #1a1a1a;
+}
+
+.app {
+  background-color: #222;
+  color: gold;
+  font-family: Arial, sans-serif;
+  padding: 20px;
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.search-input {
+  width: 100%;
+  padding: 10px;
+  font-size: 16px;
+  border: none;
+  border-radius: 5px;
+  margin-bottom: 20px;
+}
+
+.tiles-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 20px;
+}
+
+.tile {
+  background-color: #333;
+  padding: 20px;
+  border-radius: 10px;
+}
+
+.tile h2 {
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+
+.tile p {
+  font-size: 16px;
+}

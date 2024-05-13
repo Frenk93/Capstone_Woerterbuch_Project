@@ -1,0 +1,24 @@
+.card{
+        color: azure;
+        border : 2px solid black;
+        border-radius: 15px;
+        margin-top: 20px;
+        padding: 20px;
+        display: flex;
+        font-style: normal;
+        font-weight: bold;
+        font-size: large;
+        flex-direction: column;
+        position: relative;
+        top: 50%;
+        bottom: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        background-color: #888888;
+        height: 525px;
+        width: 350px;
+label { font-style: italic}
+
+
+}
