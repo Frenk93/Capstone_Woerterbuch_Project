@@ -9,7 +9,7 @@ import axios from "axios";
 function App() {
 //const [entry , setEntry] = useState<Entry[]>([]);
 const[entry, setEntry] = useState<Entry>();
-const [singleEntry, setSingleEntry]=useState<String>("");
+const [singleEntry, setSingleEntry]=useState("");
 
     useEffect(() => {
             if (singleEntry) {
