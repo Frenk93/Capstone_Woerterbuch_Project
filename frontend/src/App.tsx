@@ -55,7 +55,10 @@ function handleSubmit(event: FormEvent<HTMLFormElement>){
                   />
               </form>
 
+
           </header>
+      <body>
+      <img src="/src/assets/german.jpg" alt="" id="bild"/>
       <div className="tiles-container">
 
           Dein Treffer:
@@ -75,6 +78,8 @@ function handleSubmit(event: FormEvent<HTMLFormElement>){
 
           }
       </div>
+
+      </body>
 
 
       <footer>

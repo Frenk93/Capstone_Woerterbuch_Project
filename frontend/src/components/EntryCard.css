@@ -17,11 +17,20 @@
         box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         background-color: #888888;
         height: auto;
-        width: auto;
         justify-content: space-between;
         align-items: normal;
         overflow: hidden;
-label { font-style: italic}
+        min-width: 350px;
+        text-align: left;
+.underline{
+        font-style: italic;
+        text-decoration: underline;
+        color : darkred;
+        text-align: left;
+}
+        .firstword{
+                text-align: center;
+        }
 
 .mybutton{
         color: white;
@@ -40,6 +49,8 @@ label { font-style: italic}
                 background-color: green; /* Hintergrundfarbe bei Hover */
 
         }
+
+
 }
 
 

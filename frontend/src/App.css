@@ -59,6 +59,17 @@ input{
   margin-bottom: 20px;
 }
 
+#bild{
+  position: fixed; /* Positionierung festlegen */
+  top: 10px; /* Abstand vom oberen Rand */
+  left: 10px; /* Abstand vom linken Rand */
+  width: 100px; /* Breite des Bildes */
+  height: auto;
+  border-radius: 10px; /* Radius der abgerundeten Ecken */
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+
 .search-input {
   width: 100%;
   padding: 10px;
