@@ -16,20 +16,29 @@
         transform: translate(-50%, -50%);
         box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         background-color: #888888;
-        height: 600px;
-        width: 350px;
+        height: auto;
+        width: auto;
+        justify-content: space-between;
+        align-items: normal;
+        overflow: hidden;
 label { font-style: italic}
 
 .mybutton{
         color: white;
-        padding: 10px 20px;
-        border: none;
+        padding: 10px;
+        border: 10px;
+        left: 0;
         border-radius: 5px;
         cursor: pointer;
         transition: background-color 0.3s; /* Übergangseffekt für Farbänderung */
+        position: absolute;
+        width : 100%;
+        max-width: 100%;
+        bottom: 0;
 }
         .mybutton:hover {
                 background-color: green; /* Hintergrundfarbe bei Hover */
+
         }
 }
 
