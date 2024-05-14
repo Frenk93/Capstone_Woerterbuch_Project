@@ -1,35 +1,89 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
+
+import "./singleWord"
 import './App.css'
+import {ChangeEvent, FormEvent, useEffect, useState} from "react";
+import EntryCard from "./components/EntryCard";
+import {Entry} from "./Entry.ts";
+import axios from "axios";
 
 function App() {
-  const [count, setCount] = useState(0)
+//const [entry , setEntry] = useState<Entry[]>([]);
+const[entry, setEntry] = useState<Entry>();
+const [singleEntry, setSingleEntry]=useState("");
 
-  return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+    useEffect(() => {
+            if (singleEntry) {
+                axios.get(`api/${singleEntry}`)
+                    .then(response => {
+                        setEntry(response.data);
+                    })
+                    .catch(error => {
+                        console.error('Fehler beim Abrufen der Daten:', error);
+                    });
+            }
+        }, [singleEntry]);
+
+
+
+    function handleSearch(event :ChangeEvent<HTMLInputElement>) {
+    console.log(event.target.value);
+    setSingleEntry(event.target.value);
+
+
+}
+
+function handleSubmit(event: FormEvent<HTMLFormElement>){
+   // event.preventDefault(); // Wichtig, damit sich die Seite nicht refresht
+    console.log(event);
+
+
+}
+
+
+
+  return <>
+
+          <header className="header">
+              <h1>Wörterbuch</h1>
+              <form onSubmit={handleSubmit}>
+                  <input
+                      type="text"
+                      placeholder="Suche nach einem Wort..."
+                      value={singleEntry}
+                      onChange={handleSearch}
+                      className="search-input"
+                  />
+              </form>
+
+          </header>
+      <div className="tiles-container">
+
+          Dein Treffer:
+          {
+
+              entry && (
+                  <div>
+                      <EntryCard entry={entry}/>
+                  </div>
+              )
+
+
+
+
+
+              //entry.map(element => <EntryCard entry={element}/>)
+
+          }
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+
+
+      <footer>
+          <div>
+              <p>All Rights reserved Frenk Shabani </p>
+          </div>
+      </footer>
+
+  </>
 }
 
 export default App
