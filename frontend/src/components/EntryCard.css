@@ -16,9 +16,23 @@
         transform: translate(-50%, -50%);
         box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         background-color: #888888;
-        height: 525px;
+        height: 600px;
         width: 350px;
 label { font-style: italic}
 
-
+.mybutton{
+        color: white;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s; /* Übergangseffekt für Farbänderung */
 }
+        .mybutton:hover {
+                background-color: green; /* Hintergrundfarbe bei Hover */
+        }
+}
+
+
+
+

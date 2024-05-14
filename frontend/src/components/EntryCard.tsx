@@ -11,11 +11,11 @@ function EntryCard(props: Props ) {
         <div className="card">
             <h2>{props.entry.word.input}</h2>
             <div>
-                <label>Translation:</label>
+                <label>Übersetzung:</label>
                 <h3>{props.entry.word.translatedWord +" ," + props.entry.word.wortart}</h3>
                 <label>Genus:</label>
                 <h3>{props.entry?.word.genus}</h3>
-                <label>Pluralform/Shumtes:</label>
+                <label>Pluralform/Shumes:</label>
                 <h3>{props.entry?.word.pluralform}</h3>
             </div>
 
@@ -24,6 +24,8 @@ function EntryCard(props: Props ) {
 
             <label>Synonyme:</label>
             <p>{props.entry.synonyme}</p>
+            <button className="mybutton">⇪ Hinzufügen </button>
+
 
         </div>
     )

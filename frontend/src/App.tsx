@@ -79,7 +79,7 @@ function handleSubmit(event: FormEvent<HTMLFormElement>){
 
       <footer>
           <div>
-              <p>All Rights reserved Frenk Shabani </p>
+              <p>©2024 All Rights reserved Frenk Shabani </p>
           </div>
       </footer>
 
