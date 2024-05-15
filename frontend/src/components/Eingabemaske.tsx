@@ -2,6 +2,7 @@ import {useState} from "react";
 //import {singleWord} from "../singleWord.ts";
 import {Entry} from "../Entry.ts";
 import axios from "axios";
+import "./Eingabemaske.css"
 
 
 function Eingabemaske() {
@@ -45,6 +46,13 @@ const [synonyme, setSynonyme] = useState<string[]>([]);
         setSynonyme([...synonyme,""]);
     };
 
+    const deleteSynonymField = (index: number) => {
+        const newSynonyme = [...synonyme];
+        newSynonyme.splice(index, 1);
+        setSynonyme(newSynonyme);
+    };
+
+
     const handleSynonymeChange = (index:number, value:string)=>{
         const updateSynonyme = [...synonyme];
         updateSynonyme[index] = value;
@@ -52,15 +60,17 @@ const [synonyme, setSynonyme] = useState<string[]>([]);
     }
 
     return (
-        <div>
+
+
+        <div className="entry-container">
+            <h2>Entry-Eingabe</h2>
             <form onSubmit={handleSubmit}>
-                Wort:
                 <label>
                     Input:
                     <input
                         type="text"
                         value={input}
-                        onChange={(e)=>setInput(e.target.value)}
+                        onChange={(e) => setInput(e.target.value)}
                         required
                     />
                 </label>
@@ -69,7 +79,7 @@ const [synonyme, setSynonyme] = useState<string[]>([]);
                     Übersetzung:
                     <input type="text"
                            value={translatedWord}
-                           onChange={(e)=>setTranslatedWord(e.target.value)}
+                           onChange={(e) => setTranslatedWord(e.target.value)}
                            required
                     />
                 </label>
@@ -78,7 +88,7 @@ const [synonyme, setSynonyme] = useState<string[]>([]);
                     Wortart:
                     <input type="text"
                            value={wortart}
-                           onChange={(e)=>setWortart(e.target.value)}
+                           onChange={(e) => setWortart(e.target.value)}
                            required
                     />
                 </label>
@@ -87,7 +97,7 @@ const [synonyme, setSynonyme] = useState<string[]>([]);
                     Genus:
                     <input type="text"
                            value={genus}
-                           onChange={(e)=>setGenus(e.target.value)}
+                           onChange={(e) => setGenus(e.target.value)}
                            required
                     />
                 </label>
@@ -96,7 +106,7 @@ const [synonyme, setSynonyme] = useState<string[]>([]);
                     Plural:
                     <input type="text"
                            value={plural}
-                           onChange={(e)=>setPlural(e.target.value)}
+                           onChange={(e) => setPlural(e.target.value)}
                            required
                     />
                 </label>
@@ -107,35 +117,40 @@ const [synonyme, setSynonyme] = useState<string[]>([]);
                 <textarea>
                     <input type="text"
                            value={beispielsatz}
-                           onChange={(e)=>setBeispielsatz(e.target.value)}
+                           onChange={(e) => setBeispielsatz(e.target.value)}
                            required
                     />
                 </textarea>
                 <br/>
-                <label>
+                <label className="synonym-input">
                     Synonyme:
 
-                {
-                    synonyme.map((element, index)=>(
-                        <input key={index}
-                               type="text"
-                               value={element}
-                               onChange={(e)=> handleSynonymeChange(index, e.target.value)}
-                        />
-                    ))
-                };
+                    {
+                        synonyme.map((element, index) => (
+                            <input key={index}
+                                   type="text"
+                                   value={element}
+                                   onChange={(e) => handleSynonymeChange(index, e.target.value)}
+                            />
+                        ))
+                    }
 
-                <button type="button"
-                        onClick={addSynonymField}> Weiteres Synonym einfügen
-                </button>
+                    <button type="button"
+                            onClick={addSynonymField}> Weiteres Synonym einfügen
+                    </button>
+                    <button type="button"
+                            onClick={deleteSynonymField}> ❌
+                    </button>
                 </label>
                 <br/>
                 <button type="submit"
-                        onClick={handleSubmit}>Submit</button>
+                        onClick={handleSubmit}>Submit
+                </button>
 
 
             </form>
         </div>
+
     );
 }
 

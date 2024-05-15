@@ -1,0 +1,81 @@
+.entry-container{
+    color: azure;
+    border : 2px solid black;
+    border-radius: 15px;
+    margin-top: 20px;
+    padding: 20px;
+    display: flex;
+    font-style: normal;
+    font-weight: bold;
+    font-size: large;
+    flex-direction: column;
+    position: relative;
+    top: 50%;
+    bottom: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    background-color: #888888;
+    height: auto;
+    justify-content: space-between;
+    align-items: normal;
+    overflow: hidden;
+    min-width: 350px;
+    text-align: left;
+}
+
+h2{
+    text-align: center;
+}
+
+.entry-container label {
+    display: block;
+    margin-bottom: 5px;
+    color: whitesmoke;
+    font-weight: bold;
+}
+
+form input[type="text"],
+form textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 16px;
+    box-sizing: border-box;
+}
+form input[type="text"]:focus,
+form textarea:focus {
+    border-color: #007bff;
+    outline: none;
+}
+textarea {
+    background-color: white;
+    color: #1a1a1a;
+    resize: vertical;
+    height: 100px;
+}
+
+.synonym-input {
+    margin-top: 5px;
+    display: block;
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 16px;
+    box-sizing: border-box;
+}
+
+form button[type="button"]:hover {
+    background-color: #0056b3;
+}
+form button[type="submit"] {
+    background-color: #28a745;
+    color: #fff;
+    margin-top: 20px;
+}
+
+form button[type="submit"]:hover {
+    background-color: #218838;
+}

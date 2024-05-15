@@ -1,0 +1,39 @@
+/* Menüleiste Styles */
+.nav {
+        display: flex;
+        justify-content: start;
+        height: 7rem;
+        background-color: #0c1754;
+        position: fixed;
+        top: 0;
+        width: 100%;
+        color: #fff;
+        transition: height 0.3s;
+        z-index: 1000;
+}
+
+.nav li {
+        float: left;
+        display: table-row;
+        color: #f2f2f2;
+        text-align: center;
+        padding: 14px 16px;
+        text-decoration: none;
+
+}
+
+.nav li:hover {
+        background-color: #ddd;
+        color: #535bf2;
+}
+
+
+#bild{
+        position: absolute; /* Positionierung festlegen */
+        top: 10px; /* Abstand vom oberen Rand */
+        right: 10px; /* Abstand vom linken Rand */
+        width: 100px; /* Breite des Bildes */
+        height: auto;
+        border-radius: 10px; /* Radius der abgerundeten Ecken */
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}

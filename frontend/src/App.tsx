@@ -5,6 +5,7 @@ import {ChangeEvent, FormEvent, useEffect, useState} from "react";
 import EntryCard from "./components/EntryCard";
 import {Entry} from "./Entry.ts";
 import axios from "axios";
+import Menubar from "./components/Menubar.tsx";
 
 function App() {
 //const [entry , setEntry] = useState<Entry[]>([]);
@@ -41,10 +42,18 @@ function handleSubmit(event: FormEvent<HTMLFormElement>){
 
 
 
-  return <>
+  return(
 
-          <header className="header">
-              <h1>Wörterbuch</h1>
+<div>
+      <body className="container">
+      <div className="nav">
+          <Menubar/>
+
+      </div>
+
+      <div className="header">
+
+      <h1>Wörterbuch</h1>
               <form onSubmit={handleSubmit}>
                   <input
                       type="text"
@@ -56,9 +65,9 @@ function handleSubmit(event: FormEvent<HTMLFormElement>){
               </form>
 
 
-          </header>
-      <body>
-      <img src="/src/assets/german.jpg" alt="" id="bild"/>
+          </div>
+      <div className="content">
+
       <div className="tiles-container">
 
           Dein Treffer:
@@ -70,25 +79,21 @@ function handleSubmit(event: FormEvent<HTMLFormElement>){
                   </div>
               )
 
-
-
-
-
-              //entry.map(element => <EntryCard entry={element}/>)
-
           }
+      </div>
+
       </div>
 
       </body>
 
-
       <footer>
           <div>
-              <p>©2024 All Rights reserved Frenk Shabani </p>
+              <p className="rights">©2024 All Rights reserved Frenk Shabani </p>
           </div>
       </footer>
 
-  </>
+  </div>
+  )
 }
 
 export default App
