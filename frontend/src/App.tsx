@@ -43,17 +43,17 @@ function handleSubmit(event: FormEvent<HTMLFormElement>){
 
 
   return(
+      <body>
 
-<div>
-      <body className="container">
-      <div className="nav">
-          <Menubar/>
 
-      </div>
+      <div className="container">
+          <div className="nav">
+              <Menubar/>
 
-      <div className="header">
+          </div>
 
-      <h1>Wörterbuch</h1>
+          <div className="top">
+              <h1>Wörterbuch</h1>
               <form onSubmit={handleSubmit}>
                   <input
                       type="text"
@@ -63,36 +63,36 @@ function handleSubmit(event: FormEvent<HTMLFormElement>){
                       className="search-input"
                   />
               </form>
+          </div>
 
+
+          <div className="titles-container">
+
+
+              {
+
+
+                  entry && (
+
+                      <div>
+                          <h3>Dein Treffer:</h3>
+                          <EntryCard entry={entry}/>
+                      </div>
+                  )
+
+              }
 
           </div>
-      <div className="content">
 
-      <div className="tiles-container">
 
-          Dein Treffer:
-          {
-
-              entry && (
-                  <div>
-                      <EntryCard entry={entry}/>
-                  </div>
-              )
-
-          }
-      </div>
+          <footer>
+              <div>
+                  <p className="rights">©2024 All Rights reserved Frenk Shabani </p>
+              </div>
+          </footer>
 
       </div>
-
       </body>
-
-      <footer>
-          <div>
-              <p className="rights">©2024 All Rights reserved Frenk Shabani </p>
-          </div>
-      </footer>
-
-  </div>
   )
 }
 
