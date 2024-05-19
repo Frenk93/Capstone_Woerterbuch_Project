@@ -2,7 +2,7 @@ import {useState} from "react";
 //import {singleWord} from "../singleWord.ts";
 import {Entry} from "../Entry.ts";
 import axios from "axios";
-import "./Eingabemaske.css"
+
 
 
 function Eingabemaske() {
@@ -60,6 +60,9 @@ const [synonyme, setSynonyme] = useState<string[]>([]);
     }
 
     return (
+
+        <body>
+
 
 
         <div className="entry-container">
@@ -150,7 +153,7 @@ const [synonyme, setSynonyme] = useState<string[]>([]);
 
             </form>
         </div>
-
+        </body>
     );
 }
 

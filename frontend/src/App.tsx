@@ -1,49 +1,18 @@
 
 import "./singleWord"
 import './App.css'
-import {ChangeEvent, FormEvent, useEffect, useState} from "react";
-import EntryCard from "./components/EntryCard";
-import {Entry} from "./Entry.ts";
-import axios from "axios";
 import Menubar from "./components/Menubar.tsx";
+import {Route, Routes} from "react-router-dom";
+import Home from "./components/Home.tsx";
+import About from "./components/About.tsx";
+import Edit from "./components/Edit.tsx";
+import Flashcards from "./components/Flashcards.tsx";
 
 function App() {
-//const [entry , setEntry] = useState<Entry[]>([]);
-const[entry, setEntry] = useState<Entry>();
-const [singleEntry, setSingleEntry]=useState("");
-
-    useEffect(() => {
-            if (singleEntry) {
-                axios.get(`api/${singleEntry}`)
-                    .then(response => {
-                        setEntry(response.data);
-                    })
-                    .catch(error => {
-                        console.error('Fehler beim Abrufen der Daten:', error);
-                    });
-            }
-        }, [singleEntry]);
 
 
-
-    function handleSearch(event :ChangeEvent<HTMLInputElement>) {
-    console.log(event.target.value);
-    setSingleEntry(event.target.value);
-
-
-}
-
-function handleSubmit(event: FormEvent<HTMLFormElement>){
-   // event.preventDefault(); // Wichtig, damit sich die Seite nicht refresht
-    console.log(event);
-
-
-}
-
-
-
-  return(
-      <body>
+  return (
+      <>
 
 
       <div className="container">
@@ -52,48 +21,31 @@ function handleSubmit(event: FormEvent<HTMLFormElement>){
 
           </div>
 
-          <div className="top">
-              <h1>Wörterbuch</h1>
-              <form onSubmit={handleSubmit}>
-                  <input
-                      type="text"
-                      placeholder="Suche nach einem Wort..."
-                      value={singleEntry}
-                      onChange={handleSearch}
-                      className="search-input"
-                  />
-              </form>
+
+          <div className="main">
+
+
+              <Routes>
+                  <Route path="/" element={<Home/>}/>
+                  <Route path="/about" element={<About/>}/>
+                  <Route path="/edit" element={<Edit/>}/>
+                  <Route path="/flashcards" element={<Flashcards/>}/>
+              </Routes>
+
+
           </div>
 
 
-          <div className="titles-container">
-
-
-              {
-
-
-                  entry && (
-
-                      <div>
-                          <h3>Dein Treffer:</h3>
-                          <EntryCard entry={entry}/>
-                      </div>
-                  )
-
-              }
-
-          </div>
-
+      </div>
 
           <footer>
               <div>
                   <p className="rights">©2024 All Rights reserved Frenk Shabani </p>
               </div>
           </footer>
-
-      </div>
-      </body>
+      </>
   )
+
 }
 
 export default App

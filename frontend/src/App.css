@@ -1,110 +1,46 @@
 
+#root {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 100%;
 
-
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
-}
-
-.card {
-  padding: 2em;
+.top{
+  margin-top: 55px;
 }
 
 
-.read-the-docs {
-  color: #888;
-}
 
-input{
-  background-color: whitesmoke;
-  solid-color: #535bf2;
-  color: #1a1a1a;
-}
-
-
-body{
+.main{
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
   display: flex;
+  flex: 1;
+  margin: auto;
   flex-direction: column;
-  height: 90vh;
-  align-items: center; /* optional, center aligns the items horizontally */
-  padding: 30px;
+  place-items: center; /* Zentriert den Inhalt horizontal und vertikal */
+  text-align: center;
+  width: 100%;
 }
 
 .container{
-  flex : 1;
-  display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: center;
-  position: relative;
-  margin: 10px 0;
-  padding: 20px;
-}
-
- .container .nav {
-  overflow: hidden;
-  background-color: #333;
-}
-
-div.top{
+  display: flex;
   flex: 1;
-  justify-content: center;
-  align-items: center;
-  padding: 10px;
-
-
-
 
 }
 
 
-.rights{
+ .rights{
 
-  align-items: center;
-  position: static;
-
-
-}
-
-
-.search-input {
-  width: 100%;
-  padding: 10px;
-  font-size: 16px;
-  border: none;
-  border-radius: 5px;
-  margin-top: 10px;
-}
-
-.titles-container {
-  display: contents;
-  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-  gap: 20px;
-  margin-bottom: 20px;
+   text-align: center;
+   padding: 1rem;
+   width: 100%;
+   bottom: 0;
 
 }
 
-.tile {
-  background-color: #333;
-  padding: 20px;
-  border-radius: 10px;
-}
-
-.tile h2 {
-  font-size: 20px;
-  margin-bottom: 10px;
-}
-
-.tile p {
-  font-size: 16px;
-}
