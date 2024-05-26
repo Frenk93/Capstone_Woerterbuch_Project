@@ -8,7 +8,7 @@ public record ChatGPTRequest(
         String model,
         List<ChatGPTMessage> messages
 ) {
-    ChatGPTRequest (String message){
+    public ChatGPTRequest (String message){
         this("gpt-3.5-turbo", Collections.singletonList(new ChatGPTMessage("user", message)));
     }
 }

@@ -1,6 +1,5 @@
-import {useState} from "react";
+import {FormEvent, useState} from "react";
 //import {singleWord} from "../singleWord.ts";
-import {Entry} from "../Entry.ts";
 import axios from "axios";
 
 
@@ -15,32 +14,6 @@ const [plural, setPlural] = useState("");
 const [beispielsatz, setBeispielsatz] = useState("");
 const [synonyme, setSynonyme] = useState<string[]>([]);
 
-    const handleSubmit = async (event: React.FormEvent<HTMLFormElement> | React.MouseEvent<HTMLButtonElement>) => {
-        event.preventDefault();
-
-        const entry: Entry = {
-            word: {
-                input: input,
-                translatedWord: translatedWord,
-                wortart: wortart,
-                genus: genus,
-                pluralform: plural
-            },
-            beispielsatz: beispielsatz,
-            synonyme: synonyme
-        };
-
-        try {
-            axios.post("api", {entry})
-                .then(response =>
-                    console.log("Die Daten wurden erfolgreich übermittelt: ", response.data));
-
-        } catch (error){
-            console.error('Fehler beim Senden der Daten:', error);
-        }
-
-
-    }
 
     const addSynonymField = () => {
         setSynonyme([...synonyme,""]);
@@ -51,6 +24,23 @@ const [synonyme, setSynonyme] = useState<string[]>([]);
         newSynonyme.splice(index, 1);
         setSynonyme(newSynonyme);
     };
+
+    function submit (e: FormEvent){
+        e.preventDefault();
+        axios.post(
+            "api", {
+                word: {
+                    input: input,
+                    translatedWord: translatedWord,
+                    wortart: wortart,
+                    genus: genus,
+                    pluralform: plural
+                },
+                beispielsatz: beispielsatz,
+                synonyme: synonyme
+            }
+        ) .then(response => console.log(response.data))
+    }
 
 
     const handleSynonymeChange = (index:number, value:string)=>{
@@ -67,7 +57,7 @@ const [synonyme, setSynonyme] = useState<string[]>([]);
 
         <div className="entry-container">
             <h2>Entry-Eingabe</h2>
-            <form onSubmit={handleSubmit}>
+            <form onSubmit={submit}>
                 <label>
                     Input:
                     <input
@@ -117,13 +107,11 @@ const [synonyme, setSynonyme] = useState<string[]>([]);
                 <label>
                     Beispielsatz:
                 </label>
-                <textarea>
-                    <input type="text"
-                           value={beispielsatz}
-                           onChange={(e) => setBeispielsatz(e.target.value)}
-                           required
-                    />
-                </textarea>
+                <textarea
+                    value={beispielsatz}
+                    onChange={(e) => setBeispielsatz(e.target.value)}
+                    required
+                />
                 <br/>
                 <label className="synonym-input">
                     Synonyme:
@@ -147,7 +135,7 @@ const [synonyme, setSynonyme] = useState<string[]>([]);
                 </label>
                 <br/>
                 <button type="submit"
-                        onClick={handleSubmit}>Submit
+                        onClick={submit}>Submit
                 </button>
 
 
