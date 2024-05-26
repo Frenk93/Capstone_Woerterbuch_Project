@@ -39,6 +39,18 @@ public class ControllerAPI {
         service.setEntry(entry);
     }
 
+    @DeleteMapping
+    public void deleteEntry(@RequestBody Entry entry) {
+        service.deleteEntry(entry);
+    }
+
+    @PutMapping("/update")
+    public void updateEntry(@RequestBody Entry entry) {
+        service.updateData(entry);
+    }
+
+
+
 
 
 

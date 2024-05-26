@@ -40,6 +40,21 @@ public class ServiceAPI {
 
 
 
+    public void deleteEntry(Entry entry){
+        repo.delete(entry);
+    }
+
+
+
+    public void updateData(Entry entry){
+        Entry oldEntry = getEntryByWordName(entry.word().input());
+        repo.delete(oldEntry);
+        repo.save(entry);
+
+    }
+
+
+
 
 
 }
