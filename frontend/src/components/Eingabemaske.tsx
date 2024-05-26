@@ -1,6 +1,7 @@
 import {FormEvent, useState} from "react";
 //import {singleWord} from "../singleWord.ts";
 import axios from "axios";
+import {useSubmit} from "react-router-dom";
 
 
 
@@ -40,6 +41,13 @@ const [synonyme, setSynonyme] = useState<string[]>([]);
                 synonyme: synonyme
             }
         ) .then(response => console.log(response.data))
+        setSynonyme([])
+        setPlural("")
+        setGenus("")
+        setBeispielsatz("")
+        setWortart("")
+        setTranslatedWord("")
+        setInput("")
     }
 
 
@@ -48,6 +56,11 @@ const [synonyme, setSynonyme] = useState<string[]>([]);
         updateSynonyme[index] = value;
         setSynonyme(updateSynonyme);
     }
+
+
+
+
+
 
     return (
 

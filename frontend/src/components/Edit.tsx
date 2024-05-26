@@ -3,8 +3,7 @@ import Eingabemaske from "./Eingabemaske.tsx";
 function Edit() {
     return (
         <div>
-            <h2></h2>
-            <p>Get in touch with us!</p>
+            <h2>Add a new word!</h2>
             <Eingabemaske/>
         </div>
     );
