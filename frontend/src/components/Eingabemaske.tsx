@@ -1,7 +1,7 @@
 import {ChangeEvent, FormEvent, useEffect, useState} from "react";
 //import {singleWord} from "../singleWord.ts";
 import axios from "axios";
-import {Entry} from "../Entry.ts";
+//import {Entry} from "../Entry.ts";
 
 
 function Eingabemaske() {
@@ -13,7 +13,7 @@ function Eingabemaske() {
     const [plural, setPlural] = useState("");
     const [beispielsatz, setBeispielsatz] = useState("");
     const [synonyme, setSynonyme] = useState<string[]>([]);
-    const [entry, setEntry] = useState<Entry>();
+    //const [entry, setEntry] = useState<Entry>();
     const [singleEntry, setSingleEntry] = useState("");
     const [id, setID] = useState("")
 
@@ -84,6 +84,7 @@ function Eingabemaske() {
     function handleEdit (e: FormEvent<HTMLFormElement>) {
         e.preventDefault()
         axios.put("api/update", {
+            id: id,
             word: {
                 input: input,
                 translatedWord: translatedWord,
@@ -216,7 +217,8 @@ function Eingabemaske() {
                 <button type="submit"
                        >Submit
                 </button>
-                <button type="button" onClick={handleEdit}> Update
+                <button type="button"
+                        onClick={handleEdit}> Update
                 </button>
 
 
