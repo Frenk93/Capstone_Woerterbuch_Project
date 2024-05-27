@@ -27,7 +27,7 @@ public class ServiceAPI {
     }
 
     public Entry getEntryByWordName(String word) {
-       return repo.findByWord(word).orElseThrow();
+       return repo.findFirstByWord(word).orElseThrow();
 
     }
 
@@ -48,7 +48,6 @@ public class ServiceAPI {
 
     public void updateData(Entry entry){
         Entry oldEntry = getEntryByWordName(entry.word().input());
-        repo.delete(oldEntry);
         repo.save(entry);
 
     }

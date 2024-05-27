@@ -44,7 +44,7 @@ function Home() {
                 <form onSubmit={handleSubmit}>
                     <input
                         type="text"
-                        placeholder="Suche nach einem Wort..."
+                        placeholder="Suche nach einem Wort/Kërko për një fjalë"
                         value={singleEntry}
                         onChange={handleSearch}
                         className="search-input"

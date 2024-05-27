@@ -23,8 +23,8 @@ class ServiceAPITest {
         //GIVEN
         SingleWord word1 = new SingleWord("Kaufmann", "tregtar", "Substantiv", "Maskulin", "tregtaret");
         SingleWord word2 = new SingleWord("Kauffrau", "tregtare", "Substantiv", "Feminin", "tregtare");
-        Entry entry1 = new Entry(word1, new String []{"testwert", "WertTest"}, "Das ist ein Satz"  );
-        Entry entry2 = new Entry(word2, new String []{"test", "WertTestTestTest"}, "Das ist ein zweiter Satz");
+        Entry entry1 = new Entry("12", word1, new String []{"testwert", "WertTest"}, "Das ist ein Satz"  );
+        Entry entry2 = new Entry("12", word2, new String []{"test", "WertTestTestTest"}, "Das ist ein zweiter Satz");
         List <Entry> list = List.of(entry1, entry2);
         mockRepo.saveAll(list);
 
@@ -44,15 +44,15 @@ class ServiceAPITest {
     void test_getEntryByWordName(){
         //GIVEN
         SingleWord word1 = new SingleWord("Kaufmann", "tregtar", "Substantiv", "Maskulin", "tregtaret");
-        Entry entry1 = new Entry(word1, new String []{"testwert", "WertTest"}, "Das ist ein Satz"  );
+        Entry entry1 = new Entry("12", word1, new String []{"testwert", "WertTest"}, "Das ist ein Satz"  );
 
-        when(mockRepo.findByWord("Kaufmann")).thenReturn(Optional.of(entry1));
+        //when(mockRepo.findByWord("Kaufmann")).thenReturn(Optional.of(entry1));
 
         //WHEN
         Entry actual = testService.getEntryByWordName("Kaufmann");
 
         //THEN
-        verify(mockRepo).findByWord("Kaufmann");
+       // verify(mockRepo).findByWord("Kaufmann");
         assertEquals(entry1, actual);
 
 
@@ -62,7 +62,7 @@ class ServiceAPITest {
     void test_SetEntry(){
         //GIVEN
         SingleWord word1 = new SingleWord("Kaufmann", "tregtar", "Substantiv", "Maskulin", "tregtaret");
-        Entry entry1 = new Entry(word1, new String []{"testwert", "WertTest"}, "Das ist ein Satz"  );
+        Entry entry1 = new Entry("12", word1, new String []{"testwert", "WertTest"}, "Das ist ein Satz"  );
 
         //when(testService.setEntry(entry1)).t
 

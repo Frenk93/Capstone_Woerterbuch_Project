@@ -12,7 +12,7 @@ function EntryCard(props: Props ) {
             <h2 className="firstword">{props.entry.word.input} </h2>
 
                 <label className="underline">Übersetzung:</label>
-                <h3>{props.entry.word.translatedWord +" ," + props.entry.word.wortart}</h3>
+                <h3>{props.entry.word.translatedWord +", " + props.entry.word.wortart}</h3>
                 <label className="underline">Genus:</label>
                 <h3>{props.entry?.word.genus}</h3>
                 <label className="underline">Pluralform/Shumes:</label>

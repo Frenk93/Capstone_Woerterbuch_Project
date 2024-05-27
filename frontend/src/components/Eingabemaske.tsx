@@ -1,23 +1,44 @@
-import {FormEvent, useState} from "react";
+import {ChangeEvent, FormEvent, useEffect, useState} from "react";
 //import {singleWord} from "../singleWord.ts";
 import axios from "axios";
-import {useSubmit} from "react-router-dom";
-
+import {Entry} from "../Entry.ts";
 
 
 function Eingabemaske() {
 //const [word, setWord]= useState<singleWord>();
-const [input, setInput]=useState("");
-const [translatedWord, setTranslatedWord] = useState("");
-const [wortart, setWortart] = useState("");
-const [genus, setGenus] = useState("");
-const [plural, setPlural] = useState("");
-const [beispielsatz, setBeispielsatz] = useState("");
-const [synonyme, setSynonyme] = useState<string[]>([]);
+    const [input, setInput] = useState("");
+    const [translatedWord, setTranslatedWord] = useState("");
+    const [wortart, setWortart] = useState("");
+    const [genus, setGenus] = useState("");
+    const [plural, setPlural] = useState("");
+    const [beispielsatz, setBeispielsatz] = useState("");
+    const [synonyme, setSynonyme] = useState<string[]>([]);
+    const [entry, setEntry] = useState<Entry>();
+    const [singleEntry, setSingleEntry] = useState("");
+    const [id, setID] = useState("")
+
+    useEffect(() => {
+        if (singleEntry) {
+            axios.get(`api/${singleEntry}`)
+                .then(response => {
+                    setID(response.data.id)
+                    setTranslatedWord(response.data.word.translatedWord)
+                    setPlural(response.data.word.pluralform)
+                    setInput(response.data.word.input)
+                    setGenus(response.data.word.genus)
+                    setWortart(response.data.word.wortart)
+                    setSynonyme(response.data.synonyme)
+                    setBeispielsatz(response.data.beispielsatz)
+                })
+                .catch(error => {
+                    console.error('Fehler beim Abrufen der Daten:', error);
+                });
+        }
+    }, [singleEntry]);
 
 
     const addSynonymField = () => {
-        setSynonyme([...synonyme,""]);
+        setSynonyme([...synonyme, ""]);
     };
 
     const deleteSynonymField = (index: number) => {
@@ -26,10 +47,11 @@ const [synonyme, setSynonyme] = useState<string[]>([]);
         setSynonyme(newSynonyme);
     };
 
-    function submit (e: FormEvent){
+    function submit(e: FormEvent) {
         e.preventDefault();
         axios.post(
             "api", {
+                id : id,
                 word: {
                     input: input,
                     translatedWord: translatedWord,
@@ -40,7 +62,7 @@ const [synonyme, setSynonyme] = useState<string[]>([]);
                 beispielsatz: beispielsatz,
                 synonyme: synonyme
             }
-        ) .then(response => console.log(response.data))
+        ).then(response => console.log(response.data))
         setSynonyme([])
         setPlural("")
         setGenus("")
@@ -48,24 +70,67 @@ const [synonyme, setSynonyme] = useState<string[]>([]);
         setWortart("")
         setTranslatedWord("")
         setInput("")
+        setID("")
     }
 
 
-    const handleSynonymeChange = (index:number, value:string)=>{
+    const handleSynonymeChange = (index: number, value: string) => {
         const updateSynonyme = [...synonyme];
         updateSynonyme[index] = value;
         setSynonyme(updateSynonyme);
     }
 
 
+    function handleEdit (e: FormEvent<HTMLFormElement>) {
+        e.preventDefault()
+        axios.put("api/update", {
+            word: {
+                input: input,
+                translatedWord: translatedWord,
+                wortart: wortart,
+                genus: genus,
+                pluralform: plural
+            },
+            beispielsatz: beispielsatz,
+            synonyme: synonyme
+        }).then(response => console.log(response.data))
+        //unnötig ab hier
+        setSynonyme([])
+        setPlural("")
+        setGenus("")
+        setBeispielsatz("")
+        setWortart("")
+        setTranslatedWord("")
+        setInput("")
 
+    }
 
+    function handleSearch(event: ChangeEvent<HTMLInputElement>) {
+        console.log(event.target.value);
+        setSingleEntry(event.target.value);
+
+    }
 
 
     return (
 
+
         <body>
 
+
+        <div>
+            <form>
+                <input
+                    type="text"
+                    placeholder="Suche nach einem Wort/Kërko për një fjalë"
+                    value={singleEntry}
+                    onChange={handleSearch}
+                    className="search-input"
+                />
+            </form>
+
+
+        </div>
 
 
         <div className="entry-container">
@@ -102,7 +167,7 @@ const [synonyme, setSynonyme] = useState<string[]>([]);
                 <label>
                     Genus:
                     <input type="text"
-                           value={genus}
+                           value={ genus}
                            onChange={(e) => setGenus(e.target.value)}
                            required
                     />
@@ -121,7 +186,7 @@ const [synonyme, setSynonyme] = useState<string[]>([]);
                     Beispielsatz:
                 </label>
                 <textarea
-                    value={beispielsatz}
+                    value={ beispielsatz}
                     onChange={(e) => setBeispielsatz(e.target.value)}
                     required
                 />
@@ -130,6 +195,7 @@ const [synonyme, setSynonyme] = useState<string[]>([]);
                     Synonyme:
 
                     {
+
                         synonyme.map((element, index) => (
                             <input key={index}
                                    type="text"
@@ -148,7 +214,9 @@ const [synonyme, setSynonyme] = useState<string[]>([]);
                 </label>
                 <br/>
                 <button type="submit"
-                        onClick={submit}>Submit
+                       >Submit
+                </button>
+                <button type="button" onClick={handleEdit}> Update
                 </button>
 
 

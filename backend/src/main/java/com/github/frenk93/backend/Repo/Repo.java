@@ -11,7 +11,7 @@ import java.util.Optional;
 public interface Repo extends MongoRepository<Entry, String> {
 
     @Query("{'word.input': {'$regex': ?0, '$options':'i'} }")
-    Optional<Entry> findByWord(String input);
+    Optional<Entry> findFirstByWord(String input);
 
 
 
