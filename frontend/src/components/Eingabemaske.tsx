@@ -49,28 +49,34 @@ function Eingabemaske() {
 
     function submit(e: FormEvent) {
         e.preventDefault();
-        axios.post(
-            "api", {
-                id : id,
-                word: {
-                    input: input,
-                    translatedWord: translatedWord,
-                    wortart: wortart,
-                    genus: genus,
-                    pluralform: plural
-                },
-                beispielsatz: beispielsatz,
-                synonyme: synonyme
-            }
-        ).then(response => console.log(response.data))
-        setSynonyme([])
-        setPlural("")
-        setGenus("")
-        setBeispielsatz("")
-        setWortart("")
-        setTranslatedWord("")
-        setInput("")
-        setID("")
+        if (input === "" && translatedWord === "" && beispielsatz === "") {
+            alert("Bitte füllen Sie alle Felder aus!")
+        } else {
+            alert("Die Übersendung der Daten war erfolgreich!")
+
+            axios.post(
+                "api", {
+                    id: id,
+                    word: {
+                        input: input,
+                        translatedWord: translatedWord,
+                        wortart: wortart,
+                        genus: genus,
+                        pluralform: plural
+                    },
+                    beispielsatz: beispielsatz,
+                    synonyme: synonyme
+                }
+            ).then(response => console.log(response.data))
+            setSynonyme([])
+            setPlural("")
+            setGenus("")
+            setBeispielsatz("")
+            setWortart("")
+            setTranslatedWord("")
+            setInput("")
+            setID("")
+        }
     }
 
 
@@ -83,27 +89,35 @@ function Eingabemaske() {
 
     function handleEdit (e: FormEvent<HTMLFormElement>) {
         e.preventDefault()
-        axios.put("api/update", {
-            id: id,
-            word: {
-                input: input,
-                translatedWord: translatedWord,
-                wortart: wortart,
-                genus: genus,
-                pluralform: plural
-            },
-            beispielsatz: beispielsatz,
-            synonyme: synonyme
-        }).then(response => console.log(response.data))
-        //unnötig ab hier
-        setSynonyme([])
-        setPlural("")
-        setGenus("")
-        setBeispielsatz("")
-        setWortart("")
-        setTranslatedWord("")
-        setInput("")
+        if (id === '' && input === '' && translatedWord === "" && beispielsatz === "") {
+            alert('Bitte füllen Sie alle Felder aus.');
+        } else {
+            alert('Formular erfolgreich abgesendet!');
 
+            if (input && translatedWord && id) {
+                axios.put("api/update", {
+                    id: id,
+                    word: {
+                        input: input,
+                        translatedWord: translatedWord,
+                        wortart: wortart,
+                        genus: genus,
+                        pluralform: plural
+                    },
+                    beispielsatz: beispielsatz,
+                    synonyme: synonyme
+                }).then(response => console.log(response.data))
+                //unnötig ab hier
+                setSynonyme([])
+                setPlural("")
+                setGenus("")
+                setBeispielsatz("")
+                setWortart("")
+                setTranslatedWord("")
+                setInput("")
+
+            }
+        }
     }
 
     function handleSearch(event: ChangeEvent<HTMLInputElement>) {
@@ -217,7 +231,7 @@ function Eingabemaske() {
                 <button type="submit"
                        >Submit
                 </button>
-                <button type="button"
+                <button className="update-button" type="button"
                         onClick={handleEdit}> Update
                 </button>
 

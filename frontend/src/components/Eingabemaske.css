@@ -78,3 +78,8 @@ form button[type="submit"] {
 form button[type="submit"]:hover {
     background-color: #218838;
 }
+
+form button .update-button{
+    background-color: yellow;
+    margin-right: 0;
+}

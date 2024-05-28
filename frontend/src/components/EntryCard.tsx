@@ -23,7 +23,7 @@ function EntryCard(props: Props ) {
             <p>{props.entry.beispielsatz}</p>
 
             <label className="underline">Synonyme:</label>
-            <p>{props.entry.synonyme}</p>
+            <p>{props.entry.synonyme +" "}</p>
             <button className="mybutton">⇪ Hinzufügen </button>
 
 
