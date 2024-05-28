@@ -68,14 +68,7 @@ function Eingabemaske() {
                     synonyme: synonyme
                 }
             ).then(response => console.log(response.data))
-            setSynonyme([])
-            setPlural("")
-            setGenus("")
-            setBeispielsatz("")
-            setWortart("")
-            setTranslatedWord("")
-            setInput("")
-            setID("")
+           resetFields()
         }
     }
 
@@ -108,13 +101,7 @@ function Eingabemaske() {
                     synonyme: synonyme
                 }).then(response => console.log(response.data))
                 //unnötig ab hier
-                setSynonyme([])
-                setPlural("")
-                setGenus("")
-                setBeispielsatz("")
-                setWortart("")
-                setTranslatedWord("")
-                setInput("")
+               resetFields()
 
             }
         }
@@ -125,6 +112,28 @@ function Eingabemaske() {
         setSingleEntry(event.target.value);
 
     }
+
+    function handleDelete(){
+        //e.preventDefault();
+        if(input && translatedWord){
+            axios.delete(`api/${input}`)
+                .then(resetFields)
+                .catch((error) => console.log(error.message))
+            alert("Löschung war erfolgreich")
+        } else {
+            alert("Ungültiges Entry! Das von Ihnen angegeben Entry kann nicht gelöscht werden.")
+        }
+    }
+    const resetFields = () => {
+        setSynonyme([]);
+        setPlural("");
+        setGenus("");
+        setBeispielsatz("");
+        setWortart("");
+        setTranslatedWord("");
+        setInput("");
+        setID("");
+    };
 
 
     return (
@@ -233,6 +242,10 @@ function Eingabemaske() {
                 </button>
                 <button className="update-button" type="button"
                         onClick={handleEdit}> Update
+                </button>
+                <button className="delete-button" type="button"
+                onClick={handleDelete}>Delete
+
                 </button>
 
 

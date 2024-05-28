@@ -40,8 +40,9 @@ public class ServiceAPI {
 
 
 
-    public void deleteEntry(Entry entry){
-        repo.delete(entry);
+    public void deleteEntry(String word){
+        Optional<Entry> entry = repo.findFirstByWord(word);
+        entry.ifPresent(repo::delete);
     }
 
 

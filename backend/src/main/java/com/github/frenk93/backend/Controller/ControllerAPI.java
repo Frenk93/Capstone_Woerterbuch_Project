@@ -39,15 +39,16 @@ public class ControllerAPI {
         service.setEntry(entry);
     }
 
-    @DeleteMapping
-    public void deleteEntry(@RequestBody Entry entry) {
-        service.deleteEntry(entry);
+    @DeleteMapping("/{input}")
+    public void deleteEntry(@PathVariable String input) {
+        service.deleteEntry(input);
     }
 
     @PutMapping("/update")
     public void updateEntry(@RequestBody Entry entry) {
         service.updateData(entry);
     }
+
 
 
 

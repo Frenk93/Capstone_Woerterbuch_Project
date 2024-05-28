@@ -20,7 +20,7 @@ function EntryCard(props: Props ) {
 
 
             <label className= "underline">Beispielsatz:</label>
-            <p>{props.entry.beispielsatz}</p>
+            <p>{props.entry.beispielsatz.replace(".", '.\n')}</p>
 
             <label className="underline">Synonyme:</label>
             <p>{props.entry.synonyme +" "}</p>
