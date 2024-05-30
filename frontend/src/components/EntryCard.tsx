@@ -1,14 +1,36 @@
 import {Entry} from "../Entry.ts";
 import "./EntryCard.css"
+import axios from "axios";
+import "./Flashcards.tsx";
+import {useState} from "react";
 
 type Props ={
     entry : Entry,
 }
 
+
+
 function EntryCard(props: Props ) {
+
+    const [card, setCard] = useState<Entry>()
+
+
+    function handleFlash () {
+
+        setCard(props.entry)
+        axios.post("api/flashcards", card).then(response => console.log(response.data))
+        alert("Die Daten wurden erfolgreich übermittelt")
+    }
+
+
+
+
+
     return (
 
+
         <div className="card">
+
             <h2 className="firstword">{props.entry.word.input} </h2>
 
                 <label className="underline">Übersetzung:</label>
@@ -24,7 +46,7 @@ function EntryCard(props: Props ) {
 
             <label className="underline">Synonyme:</label>
             <p>{props.entry.synonyme +" "}</p>
-            <button className="mybutton">⇪ Hinzufügen </button>
+            <button className="mybutton" type="button" onClick={handleFlash}>⇪ Hinzufügen </button>
 
 
         </div>

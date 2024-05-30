@@ -54,6 +54,12 @@ public class ServiceAPI {
     }
 
 
+    public boolean existByWord(String word){
+        Optional<Entry> entry = repo.findFirstByWord(word);
+        return entry.isPresent();
+    }
+
+
 
 
 

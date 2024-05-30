@@ -47,12 +47,15 @@ function Eingabemaske() {
         setSynonyme(newSynonyme);
     };
 
+
+
     function submit(e: FormEvent) {
         e.preventDefault();
         if (input === "" && translatedWord === "" && beispielsatz === "") {
             alert("Bitte füllen Sie alle Felder aus!")
         } else {
             alert("Die Übersendung der Daten war erfolgreich!")
+
 
             axios.post(
                 "api", {
