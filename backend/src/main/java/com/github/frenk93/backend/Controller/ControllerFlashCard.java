@@ -1,6 +1,7 @@
 package com.github.frenk93.backend.Controller;
 
 import com.github.frenk93.backend.Model.Entry;
+import com.github.frenk93.backend.Model.Flashcard;
 import com.github.frenk93.backend.Service.ServiceAPI;
 import com.github.frenk93.backend.Service.ServiceFlashcards;
 import lombok.RequiredArgsConstructor;
@@ -15,12 +16,12 @@ public class ControllerFlashCard {
     private final ServiceFlashcards serviceFlash;
 
     @GetMapping()
-    public List<Entry> getAllEntries(){
+    public List<Flashcard> getAllEntries(){
         return serviceFlash.findAllEntries();
     }
 
     @PostMapping()
-    public void createEntry(@RequestBody Entry entry) {
+    public void createEntry(@RequestBody Flashcard entry) {
         serviceFlash.setEntry(entry);
     }
 

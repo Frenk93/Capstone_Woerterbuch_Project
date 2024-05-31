@@ -2,7 +2,7 @@ import {Entry} from "../Entry.ts";
 import "./EntryCard.css"
 import axios from "axios";
 import "./Flashcards.tsx";
-import {useState} from "react";
+//import {useState} from "react";
 
 type Props ={
     entry : Entry,
@@ -12,13 +12,12 @@ type Props ={
 
 function EntryCard(props: Props ) {
 
-    const [card, setCard] = useState<Entry>()
+   // const [card, setCard] = useState<Entry>()
 
 
     function handleFlash () {
 
-        setCard(props.entry)
-        axios.post("api/flashcards", card).then(response => console.log(response.data))
+        axios.post("api/flashcards", props.entry).then(response => console.log(response.data))
         alert("Die Daten wurden erfolgreich übermittelt")
     }
 
