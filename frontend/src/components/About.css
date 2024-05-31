@@ -1,11 +1,26 @@
-.about-container{
-    padding: 20px;
-    font-family: Arial sans-serif;
-    line-height: 1.6;
-    color: #333;
+.about-container {
+    display: flex;
+    justify-content: center; /* Zentriert den Inhalt horizontal */
+    padding: 20px;           /* Abstand zu den Rändern */
+    box-sizing: border-box;  /* Stellt sicher, dass Padding zum Innenraum gehört */
 }
 
+article {
+    max-width: 800px;        /* Begrenzung der maximalen Breite des Inhalts */
+    width: 100%;             /* Volle Breite bis zur max-width */
 
-p{
+    padding: 20px;           /* Innenabstand */
+    box-sizing: border-box;  /* Stellt sicher, dass Padding zum Innenraum gehört */
     text-align: left;
 }
+
+.text, .points, .links {
+    margin-bottom: 20px; /* Abstand zwischen den Absätzen und den Listen */
+}
+
+.points {
+    list-style-type: none; /* Entfernt die Standard-Aufzählungszeichen */
+    padding-left: 0; /* Entfernt das Standard-Einrücken */
+}
+
+.headline
