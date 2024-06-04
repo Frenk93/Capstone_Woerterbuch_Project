@@ -7,8 +7,14 @@ import Home from "./components/Home.tsx";
 import About from "./components/About.tsx";
 import Edit from "./components/Edit.tsx";
 import Flashcards from "./components/Flashcards.tsx";
+import Login from "./components/Login.tsx";
+import {useState} from "react";
+import ProtectedRoute from "./components/ProtectedRoute.tsx";
+
 
 function App() {
+
+    const [user, setUser] = useState<string>("anonym");
 
 
 
@@ -29,7 +35,10 @@ function App() {
               <Routes>
                   <Route path="/" element={<Home/>}/>
                   <Route path="/about" element={<About/>}/>
-                  <Route path="/edit" element={<Edit/>}/>
+                  <Route path="/Login" element={<Login setUser={setUser}/>}/>
+                  <Route element={<ProtectedRoute user={user}/>}>
+                      <Route path="/edit" element={<Edit/>}/>
+                  </Route>
                   <Route path="/flashcards" element={<Flashcards/>}/>
               </Routes>
 

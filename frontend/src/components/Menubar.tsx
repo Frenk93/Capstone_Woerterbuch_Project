@@ -17,7 +17,7 @@ const Menubar = () => {
                         <Link to="/about">About</Link>
                     </li>
                     <li>
-                        <Link to="/edit">Edit</Link>
+                        <Link to="/Login">Edit</Link>
                     </li>
                     <li>
                         <Link to="/flashcards">Flashcards</Link>

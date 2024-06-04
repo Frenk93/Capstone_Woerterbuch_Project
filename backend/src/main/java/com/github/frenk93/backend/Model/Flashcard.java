@@ -4,7 +4,7 @@ import org.springframework.data.annotation.Id;
 
 public record Flashcard(
         @Id
-        String id,
+        String _id,
         SingleWord word,
         String[] synonyme,
         String beispielsatz

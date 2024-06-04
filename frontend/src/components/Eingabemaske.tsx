@@ -21,7 +21,7 @@ function Eingabemaske() {
         if (singleEntry) {
             axios.get(`api/${singleEntry}`)
                 .then(response => {
-                    setID(response.data.id)
+                    setID(response.data._id)
                     setTranslatedWord(response.data.word.translatedWord)
                     setPlural(response.data.word.pluralform)
                     setInput(response.data.word.input)
@@ -59,7 +59,6 @@ function Eingabemaske() {
 
             axios.post(
                 "api", {
-                    id: id,
                     word: {
                         input: input,
                         translatedWord: translatedWord,
@@ -90,9 +89,9 @@ function Eingabemaske() {
         } else {
             alert('Formular erfolgreich abgesendet!');
 
-            if (input && translatedWord && id) {
+            if (input && translatedWord ) {
                 axios.put("api/update", {
-                    id: id,
+                    _id: id,
                     word: {
                         input: input,
                         translatedWord: translatedWord,
@@ -233,23 +232,25 @@ function Eingabemaske() {
                     }
 
                     <button type="button"
-                            onClick={addSynonymField}> Weiteres Synonym einfügen
+                            onClick={addSynonymField}> Synonym einfügen
                     </button>
                     <button type="button"
                             onClick={deleteSynonymField}> ❌
                     </button>
                 </label>
                 <br/>
-                <button type="submit"
-                       >Submit
-                </button>
-                <button className="update-button" type="button"
-                        onClick={handleEdit}> Update
-                </button>
-                <button className="delete-button" type="button"
-                onClick={handleDelete}>Delete
+                <div className="buttons-eingabemaske">
+                    <button type="submit"
+                    >Submit
+                    </button>
+                    <button className="update-button" type="button"
+                            onClick={handleEdit}> Update
+                    </button>
+                    <button className="delete-button" type="button"
+                            onClick={handleDelete}>Delete
 
-                </button>
+                    </button>
+                </div>
 
 
             </form>

@@ -22,12 +22,17 @@ public class ServiceFlashcards {
         return list;
     }
 
+    public Flashcard findEntryById(String id) {
+        Optional<Flashcard> entry = repoFlashcards.findById(id);
+        return entry.orElse(null);
+    }
+
     public void setEntry(Flashcard entry) {
         repoFlashcards.save(entry);
     }
 
-    public void deleteEntry(String word){
-        Optional<Flashcard> entry = repoFlashcards.findById(word);
+    public void deleteEntry(String id){
+        Optional<Flashcard> entry = repoFlashcards.findById(id);
         entry.ifPresent(repoFlashcards::delete);
     }
 

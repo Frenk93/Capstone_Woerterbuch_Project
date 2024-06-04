@@ -1,7 +1,7 @@
 import {singleWord} from "./singleWord.ts";
 
 export type Entry ={
-    id : string,
+    _id : string,
     word : singleWord,
     synonyme : string[],
     beispielsatz : string,

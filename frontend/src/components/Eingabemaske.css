@@ -79,7 +79,10 @@ form button[type="submit"]:hover {
     background-color: #218838;
 }
 
-form button .update-button{
+.search-input{
+    width: 100%;
+}
+
+.update-button{
     background-color: yellow;
-    margin-right: 0;
 }

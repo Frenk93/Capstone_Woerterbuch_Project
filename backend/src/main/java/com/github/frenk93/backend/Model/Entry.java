@@ -6,7 +6,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 @Document("entry")
 public record Entry(
         @Id
-        String id,
+        String _id,
         SingleWord word,
         String[] synonyme,
         String beispielsatz
