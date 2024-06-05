@@ -27,7 +27,7 @@ public class ServiceAPI {
     }
 
     public Entry getEntryByWordName(String word) {
-       return repo.findByWord(word).orElseThrow();
+       return repo.findFirstByWord(word).orElseThrow();
 
     }
 
@@ -36,6 +36,27 @@ public class ServiceAPI {
             throw new ResponseStatusException(HttpStatus.ALREADY_REPORTED);
         }
         repo.save(entry);
+    }
+
+
+
+    public void deleteEntry(String word){
+        Optional<Entry> entry = repo.findFirstByWord(word);
+        entry.ifPresent(repo::delete);
+    }
+
+
+
+    public void updateData(Entry entry){
+        Entry oldEntry = getEntryByWordName(entry.word().input());
+        repo.save(entry);
+
+    }
+
+
+    public boolean existByWord(String word){
+        Optional<Entry> entry = repo.findFirstByWord(word);
+        return entry.isPresent();
     }
 
 

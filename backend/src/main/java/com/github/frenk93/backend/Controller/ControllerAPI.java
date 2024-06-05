@@ -7,6 +7,7 @@ import com.github.frenk93.backend.Model.Wortarten;
 import com.github.frenk93.backend.Repo.Repo;
 import com.github.frenk93.backend.Service.ServiceAPI;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.lang.reflect.Array;
@@ -38,6 +39,27 @@ public class ControllerAPI {
     public void createEntry(@RequestBody Entry entry) {
         service.setEntry(entry);
     }
+
+    @DeleteMapping("/{input}")
+    public void deleteEntry(@PathVariable String input) {
+        service.deleteEntry(input);
+    }
+
+    @PutMapping("/update")
+    public void updateEntry(@RequestBody Entry entry) {
+        service.updateData(entry);
+    }
+
+    @GetMapping("/exists")
+    public ResponseEntity<Boolean> checkIfExists(@RequestParam String name) {
+        boolean exists = service.existByWord(name);
+        return ResponseEntity.ok(exists);
+    }
+
+
+
+
+
 
 
 

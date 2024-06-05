@@ -1,0 +1,72 @@
+.flashcard-container{
+    color: azure;
+    border : 2px solid black;
+    border-radius: 15px;
+    margin-top: 20px;
+    margin-bottom: 40px;
+    padding: 40px;
+    font-style: normal;
+    font-weight: bold;
+    font-size: large;
+    position: relative;
+    flex-direction: column;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    background-color: #888888;
+    height: auto;
+    justify-content: space-between;
+    align-items: normal;
+    overflow: hidden;
+    text-align: left;
+}
+
+.underline{
+    font-style: italic;
+    text-decoration: underline;
+    color : darkred;
+    text-align: left;
+}
+.flashcard-container .firstword{
+    text-align: center;
+}
+
+.flashcard-container label .firstword {
+    text-align: center;
+}
+
+.mybutton{
+    color: white;
+    padding: 10px;
+    border: 10px;
+    left: 0;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s; /* Übergangseffekt für Farbänderung */
+    position: absolute;
+    width : 100%;
+    max-width: 100%;
+    bottom: 0;
+}
+.mybutton:hover {
+    background-color: green; /* Hintergrundfarbe bei Hover */
+
+}
+
+.delete-button{
+    align-items: end;
+    color: #535bf2;
+    background-color: #888888;
+
+}
+
+.delete-button:hover{
+    background-color: #535bf2;
+}
+
+.button-container{
+    display: flex;
+    gap: 10px;
+}
+
+.count{
+
+}

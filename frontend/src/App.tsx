@@ -1,89 +1,61 @@
 
 import "./singleWord"
 import './App.css'
-import {ChangeEvent, FormEvent, useEffect, useState} from "react";
-import EntryCard from "./components/EntryCard";
-import {Entry} from "./Entry.ts";
-import axios from "axios";
+import Menubar from "./components/Menubar.tsx";
+import {Route, Routes} from "react-router-dom";
+import Home from "./components/Home.tsx";
+import About from "./components/About.tsx";
+import Edit from "./components/Edit.tsx";
+import Flashcards from "./components/Flashcards.tsx";
+import Login from "./components/Login.tsx";
+import {useState} from "react";
+import ProtectedRoute from "./components/ProtectedRoute.tsx";
+
 
 function App() {
-//const [entry , setEntry] = useState<Entry[]>([]);
-const[entry, setEntry] = useState<Entry>();
-const [singleEntry, setSingleEntry]=useState("");
 
-    useEffect(() => {
-            if (singleEntry) {
-                axios.get(`api/${singleEntry}`)
-                    .then(response => {
-                        setEntry(response.data);
-                    })
-                    .catch(error => {
-                        console.error('Fehler beim Abrufen der Daten:', error);
-                    });
-            }
-        }, [singleEntry]);
+    const [user, setUser] = useState<string>("anonym");
 
 
 
-    function handleSearch(event :ChangeEvent<HTMLInputElement>) {
-    console.log(event.target.value);
-    setSingleEntry(event.target.value);
+  return (
+      <>
 
 
-}
+      <div className="container">
+          <div className="nav">
+              <Menubar/>
 
-function handleSubmit(event: FormEvent<HTMLFormElement>){
-   // event.preventDefault(); // Wichtig, damit sich die Seite nicht refresht
-    console.log(event);
-
-
-}
+          </div>
 
 
-
-  return <>
-
-          <header className="header">
-              <h1>Wörterbuch</h1>
-              <form onSubmit={handleSubmit}>
-                  <input
-                      type="text"
-                      placeholder="Suche nach einem Wort..."
-                      value={singleEntry}
-                      onChange={handleSearch}
-                      className="search-input"
-                  />
-              </form>
-
-          </header>
-      <div className="tiles-container">
-
-          Dein Treffer:
-          {
-
-              entry && (
-                  <div>
-                      <EntryCard entry={entry}/>
-                  </div>
-              )
+          <div className="main">
 
 
+              <Routes>
+                  <Route path="/" element={<Home/>}/>
+                  <Route path="/about" element={<About/>}/>
+                  <Route path="/Login" element={<Login setUser={setUser}/>}/>
+                  <Route element={<ProtectedRoute user={user}/>}>
+                      <Route path="/edit" element={<Edit/>}/>
+                  </Route>
+                  <Route path="/flashcards" element={<Flashcards/>}/>
+              </Routes>
 
 
+          </div>
 
-              //entry.map(element => <EntryCard entry={element}/>)
 
-          }
       </div>
 
+          <footer>
+              <div>
+                  <p className="rights">©2024 All Rights reserved Frenk Shabani </p>
+              </div>
+          </footer>
+      </>
+  )
 
-      <footer>
-          <div>
-              <p>All Rights reserved Frenk Shabani </p>
-          </div>
-      </footer>
-
-  </>
 }
 
 export default App

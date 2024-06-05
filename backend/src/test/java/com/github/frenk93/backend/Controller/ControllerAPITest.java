@@ -43,7 +43,7 @@ class ControllerAPITest {
     @Test
     void test_getEntryByInputSearch() throws Exception {
         SingleWord word1 = new SingleWord("Kaufmann", "tregtar", "Substantiv", "Maskulin", "tregtaret");
-        Entry entry1 = new Entry(word1, new String []{"testwert", "WertTest"}, "Das ist ein Satz"  );
+        Entry entry1 = new Entry("12", word1, new String []{"testwert", "WertTest"}, "Das ist ein Satz"  );
 
         testRepo.save(entry1);
 
@@ -69,9 +69,7 @@ class ControllerAPITest {
     }
 
 
-
-
-    }
+}
 
 
 

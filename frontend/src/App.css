@@ -1,90 +1,47 @@
+
 #root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
-}
-
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
-}
-
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
-}
-
-.card {
-  padding: 2em;
-}
-
-.read-the-docs {
-  color: #888;
-}
-
-input{
-  background-color: whitesmoke;
-  solid-color: #535bf2;
-  color: #1a1a1a;
-}
-
-.app {
-  background-color: #222;
-  color: gold;
-  font-family: Arial, sans-serif;
-  padding: 20px;
-}
-
-.header {
-  text-align: center;
-  margin-bottom: 20px;
-}
-
-.search-input {
+  margin: 0;
+  padding: 0;
+  height: 100%;
   width: 100%;
-  padding: 10px;
-  font-size: 16px;
-  border: none;
-  border-radius: 5px;
-  margin-bottom: 20px;
+
 }
 
-.tiles-container {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-  gap: 20px;
+.top{
+  margin-top: 55px;
 }
 
-.tile {
-  background-color: #333;
+
+
+.main{
+  justify-content: center;
+  align-items: center;
   padding: 20px;
-  border-radius: 10px;
+  display: flex;
+  flex: 1;
+  margin: auto;
+  flex-direction: column;
+  place-items: center; /* Zentriert den Inhalt horizontal und vertikal */
+  text-align: center;
+  width: 100%;
 }
 
-.tile h2 {
-  font-size: 20px;
-  margin-bottom: 10px;
+.container{
+  flex-direction: column;
+  justify-content: center;
+  display: flex;
+  flex: 1;
+
 }
 
-.tile p {
-  font-size: 16px;
+
+ .rights{
+
+   text-align: center;
+   padding: 1rem;
+   width: 100%;
+   bottom: 0;
+
 }
+
+
